@@ -11,67 +11,65 @@ data_maker <- function(data, y, x) {
   } else {
     regr1 <- data[, x]
   }
-  x2 <- regr1^2
-  x3 <- regr1^3
-  sqrtx <- sapply(regr1, function(x) {if(x > 0) sqrt(x) else 0})
-  logx <- sapply(regr1, function(x) {if(x > 0) log(x) else -100})
-  expx <- exp(regr1)
-  data.frame(x = regr1, x2 = x2, x3 = x3, sqrtx = sqrtx,
-             logx = logx, expx = expx, y = res1)
+  make_model_frame(res1, regr1)
+}
+
+make_model_frame <- function(res, regr) {
+  if(is.null(res) || is.null(regr)) {
+    return(NULL)
+  }
+  x2 <- regr^2
+  x3 <- regr^3
+  sqrtx <- sapply(regr, function(x) {if(x > 0) sqrt(x) else 0})
+  logx <- sapply(regr, function(x) {if(x > 0) log(x) else -100})
+  expx <- exp(regr)
+  data.frame(x = regr, x2 = x2, x3 = x3, sqrtx = sqrtx,
+             logx = logx, expx = expx, y = res)
 }
 
 
 
 server <- function(input, output, session) {
+  dat <- reactive({
+    # Get the selected dataset
+    # requires dataset input to be selected
+    req(input$dataset)
+    get(input$dataset)
+  })
+  
+  columns <- reactive({
+    colnames(dat())
+  })
+  
+  res <- reactive({
+    # require selected result to be in selected dataset
+    req(input$result %in% columns())
+    input$result
+  })
+  
+  regr <- reactive({
+    # require selected regressor to be in selected dataset
+    req(input$result %in% columns())
+    input$regressors
+  })
+  
   mydata <- reactive({
-    # Define the data set and its columns
-    # If missing input, return to avoid error later in function
-    if(is.null(input$dataset)) {
-      return()
-    }
-    dat <- get(input$dataset)
-    columns <- colnames(dat)
-    # Make sure columns are correct for data set (when data set changes, the
-    # columns will initially be for the previous data set)
-    if (is.null(columns) || !(columns %in% names(dat))) {
-      return()
-    }
-    res <- input$result
-    # Make sure result is correct for data set (when data set changes, the
-    # result will initially be for the previous data set)
-    if (is.null(input$regressors) || !(input$regressors %in% names(dat))) {
-      return()
-    }
-    regr <- input$regressors
-    data_maker(data = dat, y = res, x = regr)
+    data_maker(data = dat(), y = res(), x = regr())
   })
   
   # Pick the resulting variable
   output$choose_result <- renderUI({
-    dat <- get(input$dataset)
-    # Make sure columns are correct for data set (when data set changes, the
-    # columns will initially be for the previous data set)
-    columns <- colnames(dat)
-    if (is.null(columns) || !(columns %in% names(dat)))
-      return()
     selectInput("result", "Pick resulting variable",
-                as.list(columns),
-                selected = columns[1])
+                choices = columns(),
+                selected = columns()[1])
   })
   
   # Select the required regressors (Check boxes)
   output$choose_regressors <- renderUI({
-    dat <- get(input$dataset)
-    columns <- colnames(dat)
-    # Make sure columns are correct for data set (when data set changes, the
-    # columns will initially be for the previous data set)
-    if (is.null(columns) || !(columns %in% names(dat))) {
-      return()
-    }
     # Create the checkboxes and select the default regressor
     radioButtons("regressors", "Choose regressors", 
-                 choices = columns,
-                 selected = columns[6])
+                 choices = columns(),
+                 selected = columns()[6])
   })
   
   output$values <- renderTable({
@@ -81,19 +79,12 @@ server <- function(input, output, session) {
   lmResults <- reactive({
     regress.exp <- input$regression
     if (!input$constant) {
-      regress.exp <- paste(input$regression, "- 1")
+      regress.exp <- paste(regress.exp, "- 1")
     }
-    
     lm(regress.exp, data = mydata())
   })
   
   output$lmStats <- renderTable({
-    dat <- get(input$dataset)
-    # Make sure result is correct for data set (when data set changes, the
-    # result will initially be for the previous data set)
-    if (is.null(input$result) || !(input$result %in% names(dat)))
-      return()
-    
     results <- summary(lmResults())
     data.frame(
       R2 = results$r.squared,
@@ -110,16 +101,8 @@ server <- function(input, output, session) {
     )
   })
   
-  
   # Show coefficients
   output$lmResults <- renderTable({
-    dat <- get(input$dataset)
-    # Make sure result is correct for data set (when data set changes, the
-    # result will initially be for the previous data set)
-    if (is.null(input$result) || !(input$result %in% names(dat))) {
-      return()
-    }
-    
     summary(lmResults())$coefficients
   })
   
