@@ -1,19 +1,5 @@
 library(shiny)
 
-data_maker <- function(data, y, x) {
-  if(is.null(y)) {
-    res1 <- data[, 1]
-  } else {
-    res1 <- data[, y]
-  }
-  if(is.null(x)) {
-    regr1 <- data[, 6] 
-  } else {
-    regr1 <- data[, x]
-  }
-  make_model_frame(res1, regr1)
-}
-
 make_model_frame <- function(res, regr) {
   if(is.null(res) || is.null(regr)) {
     return(NULL)
@@ -26,8 +12,6 @@ make_model_frame <- function(res, regr) {
   data.frame(x = regr, x2 = x2, x3 = x3, sqrtx = sqrtx,
              logx = logx, expx = expx, y = res)
 }
-
-
 
 server <- function(input, output, session) {
   dat <- reactive({
@@ -44,17 +28,17 @@ server <- function(input, output, session) {
   res <- reactive({
     # require selected result to be in selected dataset
     req(input$result %in% columns())
-    input$result
+    dat()[, input$result]
   })
   
   regr <- reactive({
     # require selected regressor to be in selected dataset
     req(input$result %in% columns())
-    input$regressors
+    dat()[, input$regressors]
   })
   
   mydata <- reactive({
-    data_maker(data = dat(), y = res(), x = regr())
+    make_model_frame(res(), regr())
   })
   
   # Pick the resulting variable
@@ -64,9 +48,9 @@ server <- function(input, output, session) {
                 selected = columns()[1])
   })
   
-  # Select the required regressors (Check boxes)
+  # Select the required regressor
   output$choose_regressors <- renderUI({
-    # Create the checkboxes and select the default regressor
+    # Create the radio buttons and select the default regressor
     radioButtons("regressors", "Choose regressors", 
                  choices = columns(),
                  selected = columns()[6])
