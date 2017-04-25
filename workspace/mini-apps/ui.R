@@ -2,7 +2,7 @@
 source("regressionModel.R")
 source("documentation_ui.R")
 
-library(shiny)
+xap.require("shiny")
 
 # Define UI for regression models demo application
 shinyUI(
