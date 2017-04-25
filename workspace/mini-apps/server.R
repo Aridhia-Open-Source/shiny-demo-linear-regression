@@ -1,6 +1,6 @@
 library(shiny)
 
-data.maker <- function(data, y, x) {
+data_maker <- function(data, y, x) {
   if(is.null(y)) {
     res1 <- data[, 1]
   } else {
@@ -43,7 +43,7 @@ server <- function(input, output, session) {
       return()
     }
     regr <- input$regressors
-    data.maker(data = dat, y = res, x = regr)
+    data_maker(data = dat, y = res, x = regr)
   })
   
   # Pick the resulting variable
