@@ -20,6 +20,8 @@ data.maker <- function(data, y, x) {
              logx = logx, expx = expx, y = res1)
 }
 
+
+
 server <- function(input, output, session) {
   mydata <- reactive({
     # Define the data set and its columns
@@ -118,7 +120,7 @@ server <- function(input, output, session) {
       return()
     }
     
-    summary(lmResults())
+    summary(lmResults())$coefficients
   })
   
   # Show plot of points, regression line, residuals
