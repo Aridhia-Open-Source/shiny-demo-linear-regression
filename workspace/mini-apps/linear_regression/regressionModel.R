@@ -26,14 +26,14 @@ regressionModelOutput <- function(id) {
     plotOutput(ns("scatter")),
     tableOutput(ns("lmStats")),
     tableOutput(ns("lmResults")),
-    tableOutput(ns("values"))
+    DT::dataTableOutput(ns("values"))
   )
 }
 
 regressionModel <- function(input, output, session, mydata, x, y) {
-  output$values <- renderTable({
+  output$values <- DT::renderDataTable({
     req(nrow(mydata()) > 0)
-    mydata()
+    DT::datatable(mydata())
   })
   
   lmResults <- reactive({
