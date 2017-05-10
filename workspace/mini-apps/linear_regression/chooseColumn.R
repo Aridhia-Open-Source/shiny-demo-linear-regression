@@ -20,6 +20,7 @@ chooseColumn <- function(input, output, session, data, predicate, label = "Selec
   
   values <- reactive({
     req(input$choose_column)
+    req(input$choose_column %in% names(data()))
     data()[, input$choose_column]
   })
   
