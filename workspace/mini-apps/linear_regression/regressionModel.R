@@ -32,6 +32,7 @@ regressionModelOutput <- function(id) {
 
 regressionModel <- function(input, output, session, mydata, x, y) {
   output$values <- renderTable({
+    req(nrow(mydata()) > 0)
     mydata()
   })
   

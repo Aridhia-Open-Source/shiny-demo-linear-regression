@@ -13,46 +13,21 @@ make_model_frame <- function(res, regr) {
 }
 
 server <- function(input, output, session) {
-  dat <- reactive({
-    # Get the selected dataset
-    # requires dataset input to be selected
-    req(input$dataset)
-    get(input$dataset)
-  })
+  
+  choose_data <- callModule(xap.chooseDataTable, "choose_data")
+  dat <- choose_data$data
+  
+  # Pick the resulting variable
+  res <- callModule(chooseNumericColumn, "choose_result", dat, label = "Pick resulting variable")
+  # Select the required regressor
+  regr <- callModule(chooseNumericColumn, "choose_regressor", dat, label = "Choose regressor", selected = 2)
   
   columns <- reactive({
     colnames(dat())
   })
   
-  res <- reactive({
-    # require selected result to be in selected dataset
-    req(input$result %in% columns())
-    dat()[, input$result]
-  })
-  
-  regr <- reactive({
-    # require selected regressor to be in selected dataset
-    req(input$result %in% columns())
-    dat()[, input$regressors]
-  })
-  
   mydata <- reactive({
     make_model_frame(res(), regr())
-  })
-  
-  # Pick the resulting variable
-  output$choose_result <- renderUI({
-    selectInput("result", "Pick resulting variable",
-                choices = columns(),
-                selected = columns()[1])
-  })
-  
-  # Select the required regressor
-  output$choose_regressors <- renderUI({
-    # Create the radio buttons and select the default regressor
-    radioButtons("regressors", "Choose regressors", 
-                 choices = columns(),
-                 selected = columns()[6])
   })
   
   callModule(regressionModel, "regression_model", mydata, input$regressors, input$result)
