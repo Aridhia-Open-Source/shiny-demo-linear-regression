@@ -1,4 +1,4 @@
-library(aridhiaProjectTemplate)
+
 xap.require("shiny")
 
 # attempt to load xapModules
