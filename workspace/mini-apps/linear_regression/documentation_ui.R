@@ -1,27 +1,27 @@
 documentation_tab <- function() {
-  tabPanel("Documentation",
+  tabPanel("Information",
            # load MathJax library so LaTeX can be used for math equations
            withMathJax(), 
-           h3("Regression models applied to datasets"), # paragraph and bold text
-           p("Several ", strong("linear regression models"),
-             " can be calculated for ", strong(em("any")),
-             " dataset within your", strong(" workspace.")),
-           p("The layout of the application contains one sidebarPanel, and two tabPanels: 
-             Application and Documentation."), 
-           p("The ", 
-             strong("Application tabPanel "), 
-             "displays the plot of the regression and statistical tables with the results of the regression, whereas the ", 
-             strong("Application tabPanel "), 
-             "contains the information you are reading just now."),
+           h3("Linear regression modelling in workspace datasets"), # paragraph and bold text
+           p("Several common linear regression models can be calculated with this app. These models 
+             can be run on any datasets within your workspace."),
+           br(),
+           p("The layout of the app contains one", strong("sidebar,"), "and two", strong("tabs"), 
+             "the first of which (Information) you are reading, and the second (Application) containing the application output
+              with the regression plot and statistical results."),
+
+           
            # break used to space sections
-           br(), 
-           p("To experiment empirically with linear regressions, in the ",
-             strong("sidebarPanel "), 
+           br(),
+           h4("To use the app:"),
+           p("To experiment with linear regressions on your workspace datasets, in the ",
+             strong("sidebar"), 
              " you may: "), 
            br(), # ordered list
            tags$ol(
              tags$li("In the first ", em("drop down box, "), 
-                     "select the database to be used."), 
+                     "select the database to be used. The ", em("Refresh table list"), "button updates the tables you can select if 
+                      any workspace datasets are changed."), 
              tags$li("In the second ", em("drop down box, "), 
                      "pick the resulting variable of the regression."), 
              tags$li("In the third ", em("drop down box, "), 
@@ -30,6 +30,12 @@ documentation_tab <- function() {
                      "you are able to define which one, of the several predefined linear models, will be used."),
              tags$li("Finally, in the ", em("check boxes "),
                      "you can define characteristics of the resulting plot.")
+            
+             ),
+           br(),
+           p(strong("NB: This R Shiny app is provided unsupported and at user's risk. If you
+                               are planning to use this app to inform your study, please review the
+                    code and ensure you are comfortable with the calculations made.")
            )
            
            )
