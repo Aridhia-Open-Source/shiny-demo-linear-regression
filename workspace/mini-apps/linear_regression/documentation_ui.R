@@ -11,8 +11,7 @@ documentation_tab <- function() {
              " tab displays the plot of the regression and statistical tables with the results of the regression.
              The ", 
              strong("Information"), 
-             " tab contains the information you are reading just now."),
-           # break used to space sections
+
            br(), 
            p("To experiment with linear regressions, in the ",
              strong("sidebar"), 
@@ -28,14 +27,26 @@ documentation_tab <- function() {
              tags$li("In the following", em("drop down box "),
                      "you are able to define which one, of the several predefined linear models, will be used."),
              tags$li("Finally, in the ", em("check boxes "),
+             strong("sidebar"), 
+             " you may: "), 
+           br(), # ordered list
+           tags$ol(
+             tags$li("In the first ", em("drop down box, "), 
+                     "select the dataset to be used. Refresh the dataset with the ", em("Refresh Table List"), "button."), 
+             tags$li("In the second ", em("drop down box, "), 
+                     "pick the resulting variable of the regression."), 
+             tags$li("In the third ", em("drop down box, "), 
+                     "choose one of the dataset variables as the regressor."), 
+             tags$li("In the second ", em("drop down box, "), 
+                     "pick the resulting variable of the regression."), 
+             tags$li("In the third ", em("drop down box, "), 
+                     "choose one of the dataset variables as the regressor."), 
+             tags$li("In the following", em("drop down box "),
+                     "you are able to define which one, of the several predefined linear models, will be used."),
+             tags$li("Finally, in the ", em("check boxes "),
                      "you can define characteristics of the resulting plot."),
              
            p("The statistical output and scatterplot are displayed in the main window."),
-           br(),
-           p(strong("NB: This R Shiny app is provided unsupported and at user's risk. If you
-                    are planning to use this app to inform your study, please review the
-                    code and ensure you are comfortable with the calculations made.")
-           ))
            
            )
 }
