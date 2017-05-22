@@ -16,19 +16,7 @@ documentation_tab <- function() {
            p("To experiment with linear regressions, in the ",
              strong("sidebar"), 
              " you may: "), 
-           br(), # ordered list
-           tags$ol(
-             tags$li("In the first ", em("drop down box, "), 
-                     "select the dataset to be used. Refresh the dataset with the ", em("Refresh Table List"), "button."), 
-             tags$li("In the second ", em("drop down box, "), 
-                     "pick the resulting variable of the regression."), 
-             tags$li("In the third ", em("drop down box, "), 
-                     "choose one of the dataset variables as the regressor."), 
-             tags$li("In the following", em("drop down box "),
-                     "you are able to define which one, of the several predefined linear models, will be used."),
-             tags$li("Finally, in the ", em("check boxes "),
-             strong("sidebar"), 
-             " you may: "), 
+           
            br(), # ordered list
            tags$ol(
              tags$li("In the first ", em("drop down box, "), 
@@ -46,7 +34,9 @@ documentation_tab <- function() {
              tags$li("Finally, in the ", em("check boxes "),
                      "you can define characteristics of the resulting plot."),
              
-           p("The statistical output and scatterplot are displayed in the main window."),
+           p("The statistical output and scatterplot are displayed in the main window.")
            
            )
+           )
+  )
 }
