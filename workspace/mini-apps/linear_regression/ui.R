@@ -38,10 +38,10 @@ shinyUI(
     ),
     # Show the main display
     mainPanel(
-      tabsetPanel(
+      tabsetPanel(documentation_tab(),
         tabPanel("Application",     
-        regressionModelOutput("regression_model")),
-        documentation_tab()
+        regressionModelOutput("regression_model"))
+        
         
         )
       ) 
