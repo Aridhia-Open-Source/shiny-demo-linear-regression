@@ -34,7 +34,12 @@ documentation_tab <- function() {
              tags$li("Finally, in the ", em("check boxes "),
                      "you can define characteristics of the resulting plot."),
              
-           p("The statistical output and scatterplot are displayed in the main window.")
+           p("The statistical output and scatterplot are displayed in the main window."),
+           br(),
+           p(strong("NB: This R Shiny app is provided unsupported and at user's risk. If you
+                    are planning to use this app to inform your study, please review the
+                    code and ensure you are comfortable with the calculations made.")
+           )
            
            )
            )
