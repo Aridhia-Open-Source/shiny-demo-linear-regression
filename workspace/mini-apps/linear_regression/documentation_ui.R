@@ -10,7 +10,8 @@ documentation_tab <- function() {
              strong("Application"), 
              " tab displays the plot of the regression and statistical tables with the results of the regression.
              The ", 
-             strong("Information"), 
+             strong("Information"),
+             " tab displays the information you are now reading on how to use the app."),
 
            br(), 
            p("To experiment with linear regressions, in the ",
@@ -43,5 +44,5 @@ documentation_tab <- function() {
            
            )
            )
-  )
+
 }
