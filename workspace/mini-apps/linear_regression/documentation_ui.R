@@ -13,7 +13,8 @@ documentation_tab <- function() {
              strong("Information"),
              " tab displays the information you are now reading on how to use the app."),
 
-           br(), 
+           br(),
+           h4("To use the app"),
            p("To experiment with linear regressions, in the ",
              strong("sidebar"), 
              " you may: "), 
