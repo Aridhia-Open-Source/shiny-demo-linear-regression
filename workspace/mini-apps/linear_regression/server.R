@@ -23,6 +23,7 @@ server <- function(input, output, session) {
   regr <- callModule(chooseNumericColumn, "choose_regressor", dat, label = "Choose regressor", selected = 2)
   
   columns <- reactive({
+
     colnames(dat())
   })
   
