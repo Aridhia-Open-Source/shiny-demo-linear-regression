@@ -72,7 +72,7 @@ regressionModel <- function(input, output, session, mydata, x, y) {
   # Show plot of points, regression line, residuals
   output$scatter <- renderPlot({
     req(!is.null(lmResults()))
-    req(nrow(lmResults())>0)
+    
     lm_scatter(lmResults(), mydata(), x, y, input$regression,
                input$predict, input$resid, input$showdata)
   })
