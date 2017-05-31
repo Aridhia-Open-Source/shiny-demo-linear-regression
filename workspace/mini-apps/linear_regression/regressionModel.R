@@ -32,17 +32,10 @@ regressionModelOutput <- function(id) {
 
 regressionModel <- function(input, output, session, mydata, x, y) {
   output$values <- DT::renderDataTable({
-    validate(
-      need(input$values != "", "")
-    )
-    req(nrow(mydata()) > 0)
     DT::datatable(mydata())
   })
-  
+
   lmResults <- reactive({
-    validate(
-      need(input$values != "", "")
-    )
     regress.exp <- input$regression
     if (!input$constant) {
       regress.exp <- paste(regress.exp, "- 1")
@@ -51,9 +44,9 @@ regressionModel <- function(input, output, session, mydata, x, y) {
   })
   
   output$lmStats <- renderTable({
-    validate(
-      need(input$values != "", "")
-    )
+    
+    req(!is.null(lmResults()))
+    
     results <- summary(lmResults())
     data.frame(
       R2 = results$r.squared,
@@ -72,17 +65,14 @@ regressionModel <- function(input, output, session, mydata, x, y) {
   
   # Show coefficients
   output$lmResults <- renderTable({
-    validate(
-      need(input$values != "", "")
-    )
+    req(!is.null(lmResults()))
     summary(lmResults())$coefficients
   })
   
   # Show plot of points, regression line, residuals
   output$scatter <- renderPlot({
-    validate(
-      need(input$values != "", "Please select a data set")
-    )
+    req(!is.null(lmResults()))
+    req(nrow(lmResults())>0)
     lm_scatter(lmResults(), mydata(), x, y, input$regression,
                input$predict, input$resid, input$showdata)
   })

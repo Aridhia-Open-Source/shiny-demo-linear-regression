@@ -2,10 +2,10 @@
 xap.require("shiny")
 
 # attempt to load xapModules
-l <- xap.require.or.install("xapModules")
+l <-  xap.require.or.install("xapModules")
 # if null then package was loaded from library
 if (!is.null(l)) {
-  # if FALSE then package was not found in repo 
+  # if FALSE then package was not found in repo
   if(!l) {
     # attempt to install from packages binaries included with the app
     pkg <- list.files("package_binaries", pattern = "xapModules*")
@@ -20,9 +20,15 @@ source("chooseColumn.R")
 
 # Define UI for regression models demo application
 shinyUI(
+
   pageWithSidebar(
     # Application title
-    headerPanel("Linear Regression Models"),
+    headerPanel("Linear Regression Models",
+                tags$head(
+                  tags$style(HTML("
+                                  .shiny-output-error { visibility: hidden; }
+                                  "))
+                  )),
     sidebarPanel(
       tags$h3("Define Data Set"),
       # selectInput("dataset", "Select data set:",
