@@ -20,6 +20,7 @@ source("chooseColumn.R")
 
 # Define UI for regression models demo application
 shinyUI(
+  fluidPage( theme = "xapstyles.css",
 
   pageWithSidebar(
     # Application title
@@ -51,6 +52,6 @@ shinyUI(
         
         )
       ) 
-    )
+    ))
   )
 
