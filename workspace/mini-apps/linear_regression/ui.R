@@ -34,7 +34,8 @@ shinyUI(
     # Show the main display
     mainPanel(width = 12,
       tabsetPanel(
-        tabPanel("Application", 
+        tabPanel("Application",
+                 fluidPage(
           conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
             sidebarLayout(
               sidebarPanel(
@@ -56,7 +57,7 @@ shinyUI(
                 
               )
             )
-          )),
+          ))),
         
         documentation_tab()
         
