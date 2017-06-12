@@ -29,6 +29,7 @@ documentation_tab <- function() {
            p("The resulting statistical output and scatterplot are displayed in the main window. "),
            br(),
            p("The video below gives an overview on how to use the app:"),
+          HTML('<iframe width="100%" height="500" src="//www.youtube.com/embed/kuf0wf4BC4g" frameborder="0"></iframe>'),
            
            br(),
            p(strong("NB: This mini-app is for provided for demonstration purposes, is unsupported and is utilised 

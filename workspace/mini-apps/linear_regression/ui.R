@@ -30,30 +30,40 @@ shinyUI(
                                   .shiny-output-error { visibility: hidden; }
                                   "))
                   )),
-    sidebarPanel(
-      tags$h3("Define Data Set"),
-      # selectInput("dataset", "Select data set:",
-      #             c("mtcars", "swiss"),
-      #             selected = "mtcars"
-      # ),
-      xap.chooseDataTableUI("choose_data"),
-      br(),
-      chooseNumericColumnUI("choose_result"),
-      chooseNumericColumnUI("choose_regressor"),
-      br(),
-      regressionModelInput("regression_model")
-    ),
+    
     # Show the main display
-    mainPanel(
+    mainPanel(width = 12,
       tabsetPanel(
-        tabPanel("Application",     
-        regressionModelOutput("regression_model")),
+        tabPanel("Application", 
+          conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
+            sidebarLayout(
+              sidebarPanel(
+                tags$h3("Define Data Set"),
+                           # selectInput("dataset", "Select data set:",
+                           #             c("mtcars", "swiss"),
+                           #             selected = "mtcars"
+                           # ),
+                           xap.chooseDataTableUI("choose_data"),
+                           br(),
+                           chooseNumericColumnUI("choose_result"),
+                           chooseNumericColumnUI("choose_regressor"),
+                           br(),
+                           regressionModelInput("regression_model")
+                
+              ),
+              mainPanel(
+                regressionModelOutput("regression_model")
+                
+              )
+            )
+          )),
+        
         documentation_tab()
         
         
         )
-      ),
-    HTML('<iframe width="100%" height="500" src="//www.youtube.com/embed/kuf0wf4BC4g" frameborder="0"></iframe>')
+      )
+   
     ))
   )
 
