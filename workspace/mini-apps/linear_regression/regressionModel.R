@@ -31,9 +31,9 @@ regressionModelOutput <- function(id) {
 }
 
 regressionModel <- function(input, output, session, mydata, x, y) {
-  output$values <- DT::renderDataTable({
-    DT::datatable(mydata())
-  })
+  #output$values <- DT::renderDataTable({
+   #DT::datatable(mydata())
+  #})
 
   lmResults <- reactive({
     regress.exp <- input$regression

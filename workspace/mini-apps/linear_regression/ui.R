@@ -22,7 +22,7 @@ source("chooseColumn.R")
 shinyUI(
   fluidPage( theme = "xapstyles.css",
 
-  pageWithSidebar(
+  bootstrapPage(
     # Application title
     headerPanel("Linear Regression Models",
                 tags$head(
@@ -51,7 +51,8 @@ shinyUI(
         
         
         )
-      ) 
+      ),
+    HTML('<iframe width="100%" height="500" src="//www.youtube.com/embed/kuf0wf4BC4g" frameborder="0"></iframe>')
     ))
   )
 

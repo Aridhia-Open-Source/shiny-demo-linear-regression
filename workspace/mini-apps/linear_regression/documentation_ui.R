@@ -1,52 +1,42 @@
 documentation_tab <- function() {
-  tabPanel("Information",
-           # load MathJax library so LaTeX can be used for math equations
-           withMathJax(), 
+  tabPanel("Help",
+          
            h3("Regression models applied to datasets"), # paragraph and bold text
-           p("Several linear regression models can be calculated for any dataset within your workspace."),
-           p("The layout of the application contains one ", strong("sidebar"), "and two ", strong("tabs: Information"), 
-             "and", strong("Application.")), 
-           p("The ", 
-             strong("Application"), 
-             " tab displays the plot of the regression and statistical tables with the results of the regression.
-             The ", 
-             strong("Information"),
-             " tab displays the information you are now reading on how to use the app."),
-
+           p("This app allows you to calculate several linear regression models for any dataset within your workspace."),
+           br(),
+           h4("App layout"),
+           p("The app contains two tabs; this  Help tab gives you an overview of the app itself. The 
+             Application tab allows you to select the dataset, parameters and run the models to display the results of 
+             the regression in both plot and statistical table format."), 
            br(),
            h4("To use the app"),
-           p("To experiment with linear regressions, in the ",
-             strong("sidebar"), 
-             " you may: "), 
+           p("To experiment with linear regressions, in the sidebar you may:"), 
+          
            
-           br(), # ordered list
+          # ordered list
            tags$ol(
-             tags$li("In the first ", em("drop down box, "), 
-                     "select the dataset to be used. Refresh the dataset with the ", em("Refresh Table List"), "button."), 
-             tags$li("In the second ", em("drop down box, "), 
-                     "pick the resulting variable of the regression."), 
-             tags$li("In the third ", em("drop down box, "), 
-                     "choose one of the dataset variables as the regressor."), 
-             tags$li("In the second ", em("drop down box, "), 
-                     "pick the resulting variable of the regression."), 
-             tags$li("In the third ", em("drop down box, "), 
-                     "choose one of the dataset variables as the regressor."), 
-             tags$li("In the following", em("drop down box "),
-                     "you are able to define which one, of the several predefined linear models, will be used."),
-             tags$li("Finally, in the ", em("check boxes "),
-                     "you can define characteristics of the resulting plot."),
+             tags$li("Starting with the first drop-down menu,", strong("select the dataset "), 
+                     "to be used - use the Refresh Table List button to update the list if datasets are changed."),
+             tags$li("Then ", strong("pick the resulting variable"), 
+                     "of the regression from the second drop-down menu."), 
+             tags$li(strong("Choose the regressor"), 
+                     "from one of the dataset variables using the third menu."), 
+             tags$li(strong("Define the model"), 
+                     "to be used."), 
+             tags$li("Finally, use the checkboxes to ", strong("select relevant plot characteristics."))), 
+      
              
-           p("The statistical output and scatterplot are displayed in the main window."),
+           p("The resulting statistical output and scatterplot are displayed in the main window. "),
            br(),
            p("The video below gives an overview on how to use the app:"),
-           HTML('<iframe width="100%" height="500" src="//www.youtube.com/embed/kuf0wf4BC4g" frameborder="0"></iframe>'),
+           
            br(),
-           p(strong("NB: This R Shiny app is provided unsupported and at user's risk. If you
-                    are planning to use this app to inform your study, please review the
-                    code and ensure you are comfortable with the calculations made.")
+           p(strong("NB: This mini-app is for provided for demonstration purposes, is unsupported and is utilised 
+                    at user's risk. If you plan to use this mini-app to inform your study, please review the code 
+                    and ensure you are comfortable with the calculations made before proceeding. ")
            )
            
-           )
+           
            )
 
 }
