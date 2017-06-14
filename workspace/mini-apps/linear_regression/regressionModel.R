@@ -10,12 +10,12 @@ regressionModelInput <- function(id) {
                             "y~x+expx", "y~sqrtx+logx", "y~x+x2+expx",
                             "y~x+sqrtx+logx")
     ),
-    checkboxInput(ns("constant"), "Include Constant", TRUE),
+    checkboxInput(ns("constant"), "Include constant", TRUE),
     
     h4("Plot"),
-    checkboxInput(ns("showdata"), "Show Data Points", TRUE),
-    checkboxInput(ns("predict"), "Show Predicted Values", TRUE),
-    checkboxInput(ns("resid"), "Show Residuals", FALSE)
+    checkboxInput(ns("showdata"), "Show data points", TRUE),
+    checkboxInput(ns("predict"), "Show predicted values", TRUE),
+    checkboxInput(ns("resid"), "Show residuals", FALSE)
   )
 }
 

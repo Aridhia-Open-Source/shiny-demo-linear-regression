@@ -39,7 +39,7 @@ shinyUI(
           conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
             sidebarLayout(
               sidebarPanel(
-                tags$h3("Define Data Set"),
+                tags$h3("Define dataset"),
                            # selectInput("dataset", "Select data set:",
                            #             c("mtcars", "swiss"),
                            #             selected = "mtcars"

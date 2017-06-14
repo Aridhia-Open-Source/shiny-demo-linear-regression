@@ -5,7 +5,7 @@ chooseColumnUI <- function(id) {
   uiOutput(ns("choose_column_ui"))
 }
 
-chooseColumn <- function(input, output, session, data, predicate, label = "Select a Column:", selected = 1) {
+chooseColumn <- function(input, output, session, data, predicate, label = "Select a column:", selected = 1) {
   ns <- session$ns
   
   columns <- reactive({
