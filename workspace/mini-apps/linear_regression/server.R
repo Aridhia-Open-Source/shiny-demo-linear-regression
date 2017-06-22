@@ -1,4 +1,3 @@
-
 make_model_frame <- function(res, regr) {
   if(is.null(res) || is.null(regr)) {
     return(NULL)

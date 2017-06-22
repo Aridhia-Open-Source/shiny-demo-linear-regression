@@ -1,4 +1,3 @@
-
 regressionModelInput <- function(id) {
   ns <- NS(id)
   
@@ -32,9 +31,9 @@ regressionModelOutput <- function(id) {
 
 regressionModel <- function(input, output, session, mydata, x, y) {
   #output$values <- DT::renderDataTable({
-   #DT::datatable(mydata())
+  #DT::datatable(mydata())
   #})
-
+  
   lmResults <- reactive({
     regress.exp <- input$regression
     if (!input$constant) {
@@ -107,14 +106,14 @@ lm_scatter <- function(m, data1, xlab, ylab, main_lab,
     }
     if (resid) {
       for (j in 1:length(x)) {
-        lines(rep(x[j], 2), c(yhat[j], y[j]), col = "red")
+        lines(rep(x[j], 2), c(yhat[j], y[j]), col = "#850F19")
       }
     }
     if (showdata) {
       points(x, y)
     }
     if (predict) {
-      lines(xcon, yline, lwd = 2, col = "blue")
+      lines(xcon, yline, lwd = 2, col = "#2C88A2")
     }
   }
 }

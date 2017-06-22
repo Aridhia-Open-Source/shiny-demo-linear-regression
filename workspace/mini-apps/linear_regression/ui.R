@@ -1,4 +1,3 @@
-
 xap.require("shiny")
 
 # attempt to load xapModules
@@ -21,50 +20,50 @@ source("chooseColumn.R")
 # Define UI for regression models demo application
 shinyUI(
   fluidPage( theme = "xapstyles.css",
-
-  bootstrapPage(
-    # Application title
-    headerPanel("Linear Regression Models",
-                tags$head(
-                  tags$style(HTML("
+             
+             bootstrapPage(
+               # Application title
+               headerPanel("Linear Regression Models",
+                           tags$head(
+                             tags$style(HTML("
                                   .shiny-output-error { visibility: hidden; }
                                   "))
-                  )),
-    
-    # Show the main display
-    mainPanel(width = 12,
-      tabsetPanel(
-        tabPanel("Application",
-                 fluidPage(
-          conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
-            sidebarLayout(
-              sidebarPanel(
-                tags$h3("Define dataset"),
-                           # selectInput("dataset", "Select data set:",
-                           #             c("mtcars", "swiss"),
-                           #             selected = "mtcars"
-                           # ),
-                           xap.chooseDataTableUI("choose_data"),
-                           br(),
-                           chooseNumericColumnUI("choose_result"),
-                           chooseNumericColumnUI("choose_regressor"),
-                           br(),
-                           regressionModelInput("regression_model")
-                
-              ),
-              mainPanel(
-                regressionModelOutput("regression_model")
-                
-              )
-            )
-          ))),
-        
-        documentation_tab()
-        
-        
-        )
-      )
-   
-    ))
-  )
+                           )),
+               
+               # Show the main display
+               mainPanel(width = 12,
+                         tabsetPanel(
+                           tabPanel("Application",
+                                    fluidPage(
+                                      conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
+                                                        sidebarLayout(
+                                                          sidebarPanel(
+                                                            tags$h3("Define dataset"),
+                                                            # selectInput("dataset", "Select data set:",
+                                                            #             c("mtcars", "swiss"),
+                                                            #             selected = "mtcars"
+                                                            # ),
+                                                            xap.chooseDataTableUI("choose_data"),
+                                                            br(),
+                                                            chooseNumericColumnUI("choose_result"),
+                                                            chooseNumericColumnUI("choose_regressor"),
+                                                            br(),
+                                                            regressionModelInput("regression_model")
+                                                            
+                                                          ),
+                                                          mainPanel(
+                                                            regressionModelOutput("regression_model")
+                                                            
+                                                          )
+                                                        )
+                                      ))),
+                           
+                           documentation_tab()
+                           
+                           
+                         )
+               )
+               
+             ))
+)
 
