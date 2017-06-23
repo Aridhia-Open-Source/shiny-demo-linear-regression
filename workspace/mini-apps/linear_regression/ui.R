@@ -35,7 +35,7 @@ shinyUI(
                          tabsetPanel(
                            tabPanel("Application",
                                     fluidPage(
-                                      conditionalPanel( condition = "$('li.active a').first().html()==='Application'",
+                                      
                                                         sidebarLayout(
                                                           sidebarPanel(
                                                             tags$h3("Define dataset"),
@@ -56,7 +56,7 @@ shinyUI(
                                                             
                                                           )
                                                         )
-                                      ))),
+                                      )),
                            
                            documentation_tab()
                            
