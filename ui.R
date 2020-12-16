@@ -41,7 +41,7 @@ shinyUI(bootstrapPage( fluidPage(
                              
                              br(), 
                              
-                             # Choose numeric column
+                             # Choose dependent and independent variables
                              chooseNumericColumnUI("choose_result"),
                              chooseNumericColumnUI("choose_regressor"),
                              

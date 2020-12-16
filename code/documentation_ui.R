@@ -17,9 +17,9 @@ documentation_tab <- function() {
                        tags$ol(
                          tags$li("Starting with the first drop-down menu,", strong("select the dataset "), 
                                  "to be used - use the Refresh table list button to update the list if datasets are changed."),
-                         tags$li("Then ", strong("pick the resulting variable"), 
+                         tags$li("Then ", strong("pick the dependent variable"), 
                                  "of the regression from the second drop-down menu."), 
-                         tags$li(strong("Choose the regressor"), 
+                         tags$li(strong("Choose the independent variable"), 
                                  "from one of the dataset variables using the third menu."), 
                          tags$li(strong("Define the model"), 
                                  "to be used."), 

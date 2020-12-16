@@ -96,8 +96,8 @@ lm_scatter <- function(m, data1, xlab, ylab, main_lab,
       x = c(min(x), max(x)),
       y = c(min(y, yline), max(y, yline)),
       type = "n",
-      xlab = "Predictor Variable",
-      ylab = "Resulting Variable",
+      xlab = "Explanatory Variable",
+      ylab = "Outcome Variable",
       main = paste0("Regression Model: ", main_lab)
     )
     
