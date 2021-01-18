@@ -16,7 +16,7 @@ documentation_tab <- function() {
                        # ordered list
                        tags$ol(
                          tags$li("Starting with the first drop-down menu,", strong("select the dataset "), 
-                                 "to be used - use the Refresh table list button to update the list if datasets are changed."),
+                                 "to be used"),
                          tags$li("Then ", strong("pick the dependent variable"), 
                                  "of the regression from the second drop-down menu."), 
                          tags$li(strong("Choose the independent variable"), 
@@ -31,8 +31,7 @@ documentation_tab <- function() {
                      column(
                        6,
                        h3("Walkthrough video"),
-                       HTML('<iframe width="100%" height="300" src="//www.youtube.com/embed/rpHQ9Ex0rI0?rel=0" frameborder="0"></iframe>'),
-                       
+                       tags$video(src="linear_regression.mp4", type = "video/mp4", width="100%", height = "350", frameborder = "0", controls = NA),                       
                        p(class = "nb", "NB: This mini-app is for provided for demonstration purposes, is unsupported and is utilised 
                        at user's risk. If you plan to use this mini-app to inform your study, please review the code 
                        and ensure you are comfortable with the calculations made before proceeding. "
