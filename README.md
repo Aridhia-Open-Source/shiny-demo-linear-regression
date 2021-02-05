@@ -4,6 +4,20 @@
 
 Once a regression model has been fit to a group of data, we can examine the **residuals**, which are the deviations from the fitted line to the observed values; this helps on the validation of the model.
 
+### About the linear regression App
+
+You can create linear regression models by:
+
+1. Selecting the dataset using the first drop-down menu
+2. Use the second drop-down menu to pick the dependent variable of the model
+3. Choose the independent variable using the next drop-down menu
+4. Define the model you wish to create
+5. Use the check-boxes to select the plot characteristics
+
+The resulting statistical output and scatterplot are displayed in the main window.
+
+The examplar datasets available in this demo are located in the 'data' folder, you can save there your datasets to be used in the app.
+
 ### Checkout and run
 
 You can clone this repository by using the command:
