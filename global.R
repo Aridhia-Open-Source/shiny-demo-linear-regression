@@ -20,8 +20,3 @@ library(shiny)
 for (file in list.files(path = "./code", full.names = TRUE)){
   source(file, local = TRUE)
 }
-
-
-# Source config file
-
-source("config.R")
