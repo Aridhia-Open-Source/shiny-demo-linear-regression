@@ -15,9 +15,11 @@ shinyUI(bootstrapPage( fluidPage(
         "))
   )),
   
+  tags$head(tags$link(rel='shortcut icon', href="favicon.ico")),
   
   # Title
-  headerPanel("Linear Regression Models"),
+  headerPanel("Linear Regression Models",
+              windowTitle = 'Linear Regression Model'),
   
   
   # Body
