@@ -6,9 +6,6 @@
 
 # Packages --------------------------------------------------
 
-# Install packages
-
-source("dependencies.R")
 
 # Load Packages
 
