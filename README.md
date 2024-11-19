@@ -23,7 +23,7 @@ The examplar datasets available in this demo are located in the 'data' folder, y
 You can clone this repository by using the command:
 
 ```
-git clone https://github.com/aridhia/demo-linear-regression
+git clone https://github.com/Aridhia-Open-Source/shiny-demo-linear-regression
 ```
 
 Open the .Rproj file in RStudio, source the script `dependencies.R` to install all the packages required by the app, and run `runApp()` to start the app.
