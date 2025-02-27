@@ -1,7 +1,6 @@
 # Packages used by the app
 
-packages <- c("shiny")
-
+packages <- c("shiny", "DT")
 
 # Install packages if not installed
 
